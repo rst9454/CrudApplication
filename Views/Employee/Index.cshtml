@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CrudApplication.Models.Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="text-center text-primary">Employee Record</h1>
+            <a class="btn btn-sm btn-success m-1" asp-controller="Employee" asp-action="Create">Create</a>
+            <p class="text-center text-success">@TempData["error"]</p>
+            <table class="table table-bordered">
+                <tr class="text-center">
+                    <th>EmployeeId</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Salary</th>
+                    <th>Action</th>
+                </tr>
+                @foreach(var d in Model)
+            {
+                    <tr class="text-center">
+                        <td>@d.Id</td>
+                        <td>@d.Name</td>
+                        <td>@d.City</td>
+                        <td>@d.State</td>
+                        <td>@d.Salary</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning " asp-controller="Employee" asp-action="Edit" asp-route-id="@d.Id">Edit</a>
+                            <a class="btn btn-sm btn-danger " asp-controller="Employee" asp-action="Delete" asp-route-id="@d.Id">Delete</a>
+                        </td>
+                    </tr>
+            }
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+  <div class="row">
+      <div>
+          <a class="btn btn-sm btn-primary m-2 " asp-action="ImportExcelFile" asp-controller="Excel">Import Excel</a> | <a class="btn btn-sm btn-warning"  asp-action="ExportExcel" asp-controller="Excel">Export_Excel</a>
+      </div>
+  </div>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table table-bordered" id="dataTableData">
+                <thead>
+                    <tr class="text-center">
+                        <th>Id</th>
+                        <th>Cust_Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/datatable_file.js"></script>
+}

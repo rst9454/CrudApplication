@@ -1,0 +1,78 @@
+﻿@model CrudApplication.Models.ViewModel.LoginSignUpViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+<div class="container">
+    <div class="row mt-lg-5">
+        <div class="col-4 offset-4 border border-primary rounded pl-5 pr-5 pb-5">
+            <div class="text-center">
+                <a class="text-light btn btn-primary font-weight-bold" asp-action="SignUp" asp-controller="Account">Sign Up</a>
+            </div>
+
+            <h6 class="text-success text-center">@TempData["successMessage"]</h6>
+            <form method="post" asp-action="Login">
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input type="text" asp-for="Username" placeholder="Enter username" class="form-control" autocomplete="off" />
+                    <span class="text-danger">@TempData["errorUsername"]</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input id="password" type="password" asp-for="Password" placeholder="Enter password" class="form-control" autocomplete="off" />
+                    <span class="text-danger">@TempData["errorPassword"]</span>
+                    <i id="open" class="fa fa-eye float-right" style="margin-top:-25px; margin-right:6px; cursor:pointer"></i>
+                    <i id="closed" class="fa fa-eye-slash float-right" style="margin-top:-25px; margin-right:6px; cursor:pointer; display:none"></i>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" asp-for="IsRemember" />
+                    <label asp-for="IsRemember"></label>
+                </div>
+
+                <dnt-captcha asp-captcha-generator-max="999999"
+                             asp-captcha-generator-min="111111"
+                             asp-captcha-generator-language="English"
+                             asp-captcha-generator-display-mode="ShowDigits"
+                             asp-fore-color="#333333"
+                             asp-back-color="#ccc"
+                             asp-font-name="Tahoma"
+                             asp-font-size="20"
+                             asp-refresh-button-class="fas fa-redo btn-sm"
+                             asp-use-relative-urls="true"
+                             asp-placeholder="Enter Captcha"
+                             asp-text-box-class="text-box form-control"
+                             asp-text-box-template="<span class='input-group-prepend'><span class='form-group-text'></span></span>{0}"
+                             asp-validation-message-class="text-danger"
+                             asp-use-noise="false" />
+                @if (TempData["captchaError"] != null)
+                {
+                    <span class="text-danger">@TempData["captchaError"] </span>
+                }
+                <div class="form-group">
+                    <input type="submit" class="btn btn-block btn-primary mt-2 mb-2" value="Log In" />
+                </div>
+            </form>
+            <div class="text-center">
+                <a class="text-primary" asp-action="ForgotUsername">Forgot Username?</a> <a class="text-primary" asp-action="ForgotPassword">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#open").click(function () {
+            $("#open").hide();
+            $("#closed").show();
+            $("#password").attr("type", "text");
+        });
+        $("#closed").click(function () {
+            $("#closed").hide();
+            $("#open").show();
+            $("#password").attr("type", "password");
+        });
+    });
+</script>
+
+

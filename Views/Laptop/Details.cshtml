@@ -1,0 +1,35 @@
+﻿@model CrudApplication.Models.ImageImplementation.Laptop
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center text-info">Laptop Details</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 text-center p-4">
+                            <span>Name : <em><b>@Model.Brand</b></em></span>
+                        </div>
+                        <div class="col-6 text-center">
+                            <img src="/Content/Laptop/@Model.Path" style="width:100px; height:100px; border:1px solid red; border-radius:10px; padding:10px;" alt="Laptop image" /><br />
+                            <span>Id : <em><b>@Model.Id</b></em></span>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <textarea class="form-control" cols="10" rows="2">@Model.Description</textarea>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-sm btn-primary text-light m-2 p-2" asp-action="Index" asp-controller="Laptop">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

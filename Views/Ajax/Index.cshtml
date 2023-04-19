@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<button class="btn btn-sm btn-primary m-2" id="btnAddEmployee">Add Employee </button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="text-center">
+            <th>Id</th>
+            <th>Name</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Salary</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody class="text-center" id="table_data"></tbody>
+</table> 
+
+<div class="madal fade modal" id="EmployeeMadal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title" id="employeeHeading">Add Employee</h1>
+                <button class="close text-danger" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="form-group" id="empId">
+                        <label>Id</label>
+                        <input type="text"class="form-control" id="EmployeeId" disabled="disabled" />
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Enter name" class="form-control" id="Name" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>State</label>
+                        <input type="text" placeholder="Enter state" class="form-control" id="State" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="Enter city" class="form-control" id="City" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>Salary</label>
+                        <input type="text" placeholder="Enter salary" class="form-control" id="Salary" autocomplete="off" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="AddEmployee();" id="AddEmployee">Save</button>
+                <button class="btn btn-warning" onclick="UpdateEmployee();" style="display:none" id="btnUpdate">Update</button>
+                <button class="btn btn-danger btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" id="urlEmployeeData" value="@Url.Action("EmployeeList","Ajax")" />
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/custom.js"></script>

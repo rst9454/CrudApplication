@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CrudApplication.Models.Stored_Proc.Wendor>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <a class="btn btn-sm btn-primary m-2" asp-action="SaveOrUpdate" asp-controller="Stored">Add Wendor</a>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>City</th>
+                        <th>Pincode</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model)
+                    {
+                        <tr class="text-center">
+                            <td>@d.Id</td>
+                            <td>@d.Name</td>
+                            <td>@d.Gender</td>
+                            <td>@d.City</td>
+                            <td>@d.PinCode</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-controller="Stored" asp-route-id="@d.Id">Edit</a> | <a class="btn btn-sm btn-danger" asp-action="Delete" asp-controller="Stored" asp-route-id="@d.Id" >Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
